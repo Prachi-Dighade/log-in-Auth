@@ -1,0 +1,114 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f2f2f2;      
+  padding: 20px;
+}
+
+.container {
+  background: #ffffff;       
+  width: 100%;
+  max-width: 380px;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+h2 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 26px;
+}
+
+.inputBox {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+label {
+  color: #444;
+  font-size: 14px;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  background: #fafafa;
+  color: #333;
+  font-size: 14px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #333;          
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #000;
+}
+
+.links {
+  margin-top: 15px;
+  color: #555;
+  font-size: 14px;
+}
+
+.links a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; font-family:"Poppins",sans-serif; }
+body { height:100vh; display:flex; align-items:center; justify-content:center; background:#f2f2f2; padding:20px; }
+.container { background:#fff; padding:32px; width:100%; max-width:420px; border-radius:12px; box-shadow:0 6px 24px rgba(0,0,0,0.08); text-align:center; }
+h2 { color:#222; margin-bottom:14px; font-size:24px; }
+.inputBox { margin-bottom:12px; text-align:left; display:flex; gap:8px; align-items:center; }
+.inputBox label { color:#444; font-size:13px; display:block; margin-bottom:6px; }
+input { width:100%; padding:10px 12px; border-radius:8px; border:1px solid #ddd; background:#fafafa; color:#333; font-size:14px; }
+button { padding:10px 14px; border-radius:8px; border:none; background:#222; color:#fff; font-weight:600; cursor:pointer; }
+button:hover{ opacity:0.95; }
+.links { margin-top:12px; color:#666; font-size:14px; }
+.links a { color:#222; text-decoration:none; font-weight:600; }
+.pwd-toggle { background:transparent; border:none; cursor:pointer; font-size:18px; padding:6px; }
+.password-row { align-items:flex-end; gap:8px; }
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 40px; 
+}
+
+.password-wrapper i {
+  position: absolute;
+  right: 12px;     
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #666;
+}

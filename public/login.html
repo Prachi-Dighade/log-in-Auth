@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <h2>Welcome Back</h2>
+
+    <div class="inputBox">
+      <label>Email</label>
+      <input id="email" type="email" required>
+    </div>
+
+    <div class="inputBox">
+      <label>Password</label>
+      <div class="password-wrapper">
+        <input id="password" type="password" required>
+        <i class="fa-regular fa-eye" id="toggleLoginPwd"></i>
+      </div>
+    </div>
+
+    <button id="loginBtn">Login</button>
+
+    <div class="links">
+      Don't have an account? <a href="signup.html">Sign Up</a>
+    </div>
+  </div>
+
+
+<script>
+
+const pwd = document.getElementById("password");
+const eye = document.getElementById("toggleLoginPwd");
+
+eye.addEventListener("click", () => {
+  if (pwd.type === "password") {
+    pwd.type = "text";
+    eye.classList.remove("fa-eye");
+    eye.classList.add("fa-eye-slash");
+  } else {
+    pwd.type = "password";
+    eye.classList.remove("fa-eye-slash");
+    eye.classList.add("fa-eye");
+  }
+});
+
+
+document.getElementById("loginBtn").addEventListener("click", async () => {
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+
+  if (!email || !password) {
+    alert("Enter email and password");
+    return;
+  }
+
+  try {
+    const res = await fetch("http://localhost:3000/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password })
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      window.location.href = "success.html";   
+    } else {
+      alert(data.message);
+    }
+
+  } catch (err) {
+    alert("Network error");
+  }
+});
+
+</script>
+
+</body>
+</html>

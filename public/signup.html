@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="style.css">
+
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <h2>Create Account</h2>
+
+    <div class="inputBox">
+      <label>Name</label>
+      <input id="name" type="text" required>
+    </div>
+
+    <div class="inputBox">
+      <label>Email</label>
+      <input id="email" type="email" required>
+    </div>
+
+   
+    <div class="inputBox">
+      <label>Password</label>
+      <div class="password-wrapper">
+        <input id="password" type="password" required>
+        <i class="fa-regular fa-eye" id="togglePwd"></i>
+      </div>
+    </div>
+
+    <button id="signupBtn">Create Account</button>
+
+    <div class="links">
+      Already have an account? <a href="login.html">Login</a>
+    </div>
+  </div>
+
+
+<script>
+
+const pwd = document.getElementById("password");
+const eye = document.getElementById("togglePwd");
+
+eye.addEventListener("click", () => {
+  if (pwd.type === "password") {
+    pwd.type = "text";
+    eye.classList.remove("fa-eye");
+    eye.classList.add("fa-eye-slash");
+  } else {
+    pwd.type = "password";
+    eye.classList.remove("fa-eye-slash");
+    eye.classList.add("fa-eye");
+  }
+});
+
+// signup request
+document.getElementById("signupBtn").addEventListener("click", async () => {
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+
+  if (!name || !email || !password) {
+    alert("All fields required");
+    return;
+  }
+
+  try {
+    const res = await fetch("http://localhost:3000/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, password })
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      alert("Account created!");
+      window.location.href = "login.html";
+    } else {
+      alert(data.message);
+    }
+
+  } catch (err) {
+    alert("Network error");
+  }
+});
+
+</script>
+
+</body>
+</html>

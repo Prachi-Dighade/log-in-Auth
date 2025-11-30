@@ -56,7 +56,7 @@ eye.addEventListener("click", () => {
 
 document.getElementById("loginBtn").addEventListener("click", async () => {
   const email = document.getElementById("email").value.trim();
-  const password = document.getElementById("password").value;
+  const password = document.getElementById("password").value.trim();
 
   if (!email || !password) {
     alert("Enter email and password");
@@ -64,7 +64,7 @@ document.getElementById("loginBtn").addEventListener("click", async () => {
   }
 
   try {
-    const res = await fetch("http://localhost:3000/login", {
+    const res = await fetch("https://log-in-auth.onrender.com/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password })
@@ -73,15 +73,16 @@ document.getElementById("loginBtn").addEventListener("click", async () => {
     const data = await res.json();
 
     if (data.success) {
-      window.location.href = "success.html";   
+      window.location.href = "success.html";
     } else {
       alert(data.message);
     }
-
   } catch (err) {
     alert("Network error");
+    console.error(err);
   }
 });
+
 
 </script>
 
